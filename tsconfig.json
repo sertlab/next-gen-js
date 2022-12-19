@@ -3,21 +3,23 @@
     "display": "Node 18",
   
     "compilerOptions": {
-      "module": "commonjs",
-      "target": "es5",
       "moduleResolution": "node",
+      "allowJs": true,
+      "target": "es6",
       "strict": true,
       "esModuleInterop": true,
       "skipLibCheck": true,
       "forceConsistentCasingInFileNames": true,
       "outDir": "./dist",
       "rootDir": "./src",
+      "baseUrl": ".",
       "declaration": true,
-      "lib": [
-        "es7",
-        "dom"
-      ]
+      "lib": ["es6", "dom", "dom.iterable"],
+      "allowSyntheticDefaultImports": true
     },
-    "include": ["src/**/*.ts"],
+    "include": [
+      "src/**/*.ts",
+      "src/module/*.js"
+    ],
     "exclude": ["dist"]
   }

@@ -1,0 +1,1 @@
+export {ConfigurationCollection} from './configuration-collection';
