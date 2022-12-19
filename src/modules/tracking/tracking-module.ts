@@ -1,6 +1,7 @@
 import { DotdigitalIntegrationDecorator } from "../../dotditial-intergration-decorator.js";
 import { ConfigurationCollection } from "../../collection/index.js";
 import { ArgumentInterface } from "../../api/index.js";
+import { CallableTrackingFunctions } from "./index.js";
 import * as DotdigitalTreackingScript from "./lib/main.js";
 
 declare global {
@@ -63,7 +64,7 @@ export class Tracking extends DotdigitalIntegrationDecorator{
             });
         }
 
-        public async call(action: string, data: ArgumentInterface[]): Promise<any> {
+        public async call(action:CallableTrackingFunctions, data: ArgumentInterface[]): Promise<any> {
             try {
                 const args = data.map(argument => argument.getData());
 

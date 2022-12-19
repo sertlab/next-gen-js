@@ -1,5 +1,6 @@
 import { ConfigurationCollection } from "./collection/index";
 import { ArgumentInterface } from './api/index';
+import { CallableTrackingFunctions } from "./modules/tracking/index";
 
 export abstract class DotdigitalIntegrationDecorator {
 
@@ -25,9 +26,8 @@ export abstract class DotdigitalIntegrationDecorator {
 
     protected abstract teardown():Promise<any>
 
-    public abstract call(action: string, data: ArgumentInterface[]):Promise<any>
+    public abstract call(action:CallableTrackingFunctions, data: ArgumentInterface[]):Promise<any>
 
-    
 
 
 }
