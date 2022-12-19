@@ -1,5 +1,5 @@
-import { ConfigurationCollection } from "./collection";
-import { ArgumentInterface } from './api';
+import { ConfigurationCollection } from "./collection/index";
+import { ArgumentInterface } from './api/index';
 
 export abstract class DotdigitalIntegrationDecorator {
 
@@ -21,9 +21,13 @@ export abstract class DotdigitalIntegrationDecorator {
 
     protected abstract validateConfigurtation():boolean
 
+    protected abstract setup():Promise<any>
+
+    protected abstract teardown():Promise<any>
+
     public abstract call(action: string, data: ArgumentInterface[]):Promise<any>
 
-    public abstract setup():Promise<any>
+    
 
 
 }

@@ -1,7 +1,7 @@
 import { DotdigitalIntegrationDecorator } from "../../dotditial-intergration-decorator.js";
-import { ConfigurationCollection } from "../../collection/configurtation-collection.js";
-import { ArgumentInterface } from "src/api/argument-interface.js";
-import * as DotdigitalTreackingScript from './lib/main.js';
+import { ConfigurationCollection } from "../../collection/index.js";
+import { ArgumentInterface } from "../../api/index.js";
+import * as DotdigitalTreackingScript from "./lib/main.js";
 
 declare global {
     var dmpt: {
@@ -19,26 +19,37 @@ export class Tracking extends DotdigitalIntegrationDecorator{
         }
 
         protected validateConfigurtation(): boolean {
-            
-            if (!this.configurtation.get('account_id')) {
-                throw new Error('Account id is not set');
-            }
 
             return true;
 
         }
+        
+        protected teardown(): Promise<any> {
+            return new Promise((resolve, reject) => {
+                try {
+                    globalThis[dmtrackingobjectname] = undefined;
+                }
+                catch (error) {
+                    reject(error);
+                }
+                resolve(this);
+            }).catch((error) => {
+                console.log(error);
+            });
+        }
 
-        public setup(): Promise<any> {
+        protected setup(): Promise<any> {
 
             return new Promise((resolve, reject) => {
                 
                 try {
                     this.validateConfigurtation();
-
-                    window.dmtrackingobjectname = this.gloablReference;
-                    DotdigitalTreackingScript.init(this.configurtation.get('account_id')?.value as string)
-                    this.setWrappee(window['dmpt']);
-                    this.wrappee.create();
+                    globalThis.dmtrackingobjectname = this.gloablReference;
+                    globalThis[this.gloablReference] = {};
+                    globalThis[this.gloablReference].q = [];
+                    DotdigitalTreackingScript.init()
+                    this.setWrappee(globalThis['dmpt']);
+                    
                 }
                 catch (error) {
                     reject(error);
@@ -52,15 +63,18 @@ export class Tracking extends DotdigitalIntegrationDecorator{
             });
         }
 
-        public call(action: string, data: ArgumentInterface[]): Promise<any> {
+        public async call(action: string, data: ArgumentInterface[]): Promise<any> {
+            try {
+                const args = data.map(argument => argument.getData());
 
-            return new Promise((resolve) => {
-                this.wrappee[action](...data.map( argument => argument.getData() ));
-                resolve(this);
-            }).catch((error) => {
+                await this.setup();
+                await this.wrappee(action, data);
+                await this.teardown();
+                return this;
+            }
+            catch (error) {
                 console.log(error);
-            });
-            throw new Error("Method not implemented.");
+            }  
         }
 
 }

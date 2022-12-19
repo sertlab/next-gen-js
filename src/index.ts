@@ -2,11 +2,18 @@ export {DotdigitalIntegrationDecorator} from './dotditial-intergration-decorator
 
 import { Tracking } from "./modules/tracking/tracking-module.js";
 import { ConfigurationCollection } from "./collection/configurtation-collection.js";
+import { ModuleCallArgument } from "./model/module-call-argument.js";
+import ArgumentTypes from './api/argument-types.js';
 
-const config = new ConfigurationCollection();
-config.add({key: 'account_id', value: '123456789'});
-const tracking = new Tracking(config);
+function run()
+{
+    const config = new ConfigurationCollection();
+    const tracking = new Tracking(config);
+    const TrackingId =  new ModuleCallArgument('account_id', 'DM-5862029334-01', ArgumentTypes.STRING)
 
-tracking.setup().then((result) => {
-    console.log(result);
-});
+    tracking.call('create', [TrackingId])
+    tracking.call('track', []);
+      
+}
+
+run();

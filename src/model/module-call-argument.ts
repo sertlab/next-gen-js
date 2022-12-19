@@ -1,5 +1,4 @@
-import { ArgumentInterface } from "../api";
-import { ArgumentTypes } from '../api';
+import { ArgumentInterface, ArgumentTypes } from "../api/index";
 
 export class ModuleCallArgument implements ArgumentInterface
 {

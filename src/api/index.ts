@@ -1,3 +1,3 @@
-export {ArgumentInterface} from './argument-interface';
+export type {ArgumentInterface} from './argument-interface';
 export {default as ArgumentTypes} from './argument-types';
-export {ConfigurationInterface} from './configuration-interface';
+export type {ConfigurationInterface} from './configuration-interface';

@@ -1,5 +1,5 @@
 
-import { ArgumentTypes } from '../api';
+import { ArgumentTypes } from './index';
 
 export interface  ArgumentInterface {
   

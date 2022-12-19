@@ -1,25 +1,29 @@
 {
     "$schema": "https://json.schemastore.org/tsconfig",
     "display": "Node 18",
-  
     "compilerOptions": {
-      "moduleResolution": "node",
+      "lib": ["es5", "es2015.promise", "dom", "es2015"],
+      "target": "es5",
+      "typeRoots": [
+        "node_modules/@types"
+      ],
       "allowJs": true,
-      "target": "es6",
-      "strict": true,
-      "esModuleInterop": true,
-      "skipLibCheck": true,
-      "forceConsistentCasingInFileNames": true,
-      "outDir": "./dist",
-      "rootDir": "./src",
-      "baseUrl": ".",
-      "declaration": true,
-      "lib": ["es6", "dom", "dom.iterable"],
-      "allowSyntheticDefaultImports": true
+      "outDir": "dist",
+      "module": "es2015",
+      "moduleResolution": "node",
+      "baseUrl": "src",
+      "paths": {
+        "src/*": ["./*"]
+      },
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      "allowSyntheticDefaultImports": true,
+      "declaration": false,
+      "sourceMap": true
     },
     "include": [
       "src/**/*.ts",
       "src/module/*.js"
-    ],
-    "exclude": ["dist"]
+, "src/modules/tracking/lib/main.js", "src/modules/tracking/lib/tracker.js", "src/modules/tracking/lib/util.js"    ],
+    "exclude": ["src/modules/tracking/lib/dist"]
   }
