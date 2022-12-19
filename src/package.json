@@ -1,0 +1,17 @@
+{
+  "name": "@theunacceptables/next-gen-js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "license": "MIT",
+  "description": "Winning project for hackweek 2022",
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "typescript": "^4.9.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sertlab/next-gen-js.git"
+  }
+}
