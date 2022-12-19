@@ -23,7 +23,8 @@
     },
     "include": [
       "src/**/*.ts",
-      "src/module/*.js"
-, "src/modules/tracking/lib/main.js", "src/modules/tracking/lib/tracker.js", "src/modules/tracking/lib/util.js"    ],
-    "exclude": ["src/modules/tracking/lib/dist"]
+      "src/module/*.js",
+      "src/modules/tracking/lib/main.js"
+    ],
+    "exclude": ["dist", "node_modules", "src/**/*.spec.ts", "src/**/*.test.ts"]
   }
