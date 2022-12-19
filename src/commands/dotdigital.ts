@@ -1,5 +1,6 @@
-import {Command, Flags} from '@oclif/core';
+import {Command, CliUx} from '@oclif/core';
 import * as inquirer from 'inquirer';
+import { setTimeout } from "timers/promises";
 
 export default class Dotdigital extends Command {
   static description = 'Dotdigital next generation JS';
@@ -76,5 +77,13 @@ export default class Dotdigital extends Command {
     this.log(`Install web behaviour tracking scripts?: ${this.wbtEnabled}`)
     this.log(`Chat api space id: ${this.chatApiSpaceId}`)
     this.log(`Wbt profile: ${this.wbtProfileId}`)
+
+
+    CliUx.ux.action.start('Install dotdigital chat')
+    await setTimeout(5000);
+    CliUx.ux.action.stop()
+    CliUx.ux.action.start('Install dotdigital wbt')
+    await setTimeout(5000);
+    CliUx.ux.action.stop()
   }
 }
