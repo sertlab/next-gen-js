@@ -1,6 +1,6 @@
-import { ConfigurationCollection } from "./collection/index";
-import { ArgumentInterface } from './api/index';
-import { CallableTrackingFunctions } from "./modules/tracking/index";
+import { ConfigurationCollection } from "./collection/index.js";
+import { ArgumentInterface } from './api/index.js';
+import { CallableTrackingFunctions } from "./modules/tracking/index.js";
 
 export abstract class DotdigitalIntegrationDecorator {
 
