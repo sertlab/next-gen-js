@@ -20,7 +20,10 @@
     "@oclif/core": "^1.22.0",
     "@oclif/plugin-help": "^5",
     "@oclif/plugin-plugins": "^2.1.8",
-    "inquirer": "^8.2.5"
+    "dotdigital": "file:/home/ubuntu/hackweek2022/next-gen-js",
+    "generate-template-files": "^3.2.1",
+    "inquirer": "^8.2.5",
+    "react": "^18.2.0"
   },
   "devDependencies": {
     "@oclif/test": "^2.2.15",
@@ -28,6 +31,7 @@
     "@types/inquirer": "^8.2.5",
     "@types/mocha": "^9.0.0",
     "@types/node": "^16.18.10",
+    "@types/react": "^18.0.26",
     "chai": "^4",
     "eslint": "^7.32.0",
     "eslint-config-oclif": "^4",

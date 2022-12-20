@@ -1,6 +1,7 @@
 import {Command, CliUx} from '@oclif/core';
 import * as inquirer from 'inquirer';
 import { setTimeout } from "timers/promises";
+import { TrackingModule } from 'dotdigital';
 
 export default class Dotdigital extends Command {
   static description = 'Dotdigital next generation JS';
@@ -12,6 +13,16 @@ export default class Dotdigital extends Command {
   private wbtProfileId = '';
   
   async run() {
+
+    const config = new TrackingModule.ConfigurationCollection();
+    config.add({key:'regeion',value:"r1"})
+
+    let tracking = new TrackingModule.Tracking(config);
+
+    tracking.call(TrackingModule.CallableTrackingFunctions.create, [
+      new TrackingModule.ModuleCallArgument('account_id', 'DM-5862029334-01', TrackingModule.ArgumentTypes.STRING)
+    ]);
+
     let framework: any = await inquirer.prompt([
       {
       name: 'framework',
