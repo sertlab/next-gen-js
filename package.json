@@ -2,6 +2,7 @@
   "name": "@theunacceptables/next-gen-js",
   "main": "dist.browser/index.js",
   "types": "dist.browser/index.d.ts",
+  "version": "1.0.0",
   "license": "MIT",
   "description": "Winning project for hackweek 2022",
   "scripts": {

@@ -5,7 +5,8 @@
       "lib": ["es5", "es2015.promise", "dom", "es2015"],
       "target": "es5",
       "typeRoots": [
-        "node_modules/@types"
+        "./node_modules/@types", 
+        "./src/types"
       ],
       "allowJs": true,
       "outDir": "dist.browser",
@@ -18,7 +19,7 @@
       "emitDecoratorMetadata": true,
       "experimentalDecorators": true,
       "allowSyntheticDefaultImports": true,
-      "declaration": false,
+      "declaration": true,
       "sourceMap": true
     },
     "include": [
