@@ -1,4 +1,15 @@
-export function init() {
+export  function init() {
+
+    Number.isInteger = Number.isInteger || function (value) {
+        return typeof value === 'number' &&
+            isFinite(value) &&
+            Math.floor(value) === value;
+    };
+    
+    /**
+     * 
+     */
+    var WidgetBootStrap = (function () {
         /**
          * constructor
          */
@@ -198,24 +209,23 @@ export function init() {
          */
         WidgetBootStrap.prototype.bootstrap = function (config) {
             this.log("bootstrap()", config);
-
-            var urlBase = this.getUrlBase();
+            var urlBase = _ddgChatConfig.urlBase + "/widgets/";
             this.log("urlBase: " + urlBase);
+            document.head.appendScript(urlBase + config.version + '/bridge.js', "comapi-widget-bridge");
 
-            this.appendScript(urlBase + config.version + '/bridge.js', "comapi-widget-bridge");
         }
 
-        Number.isInteger = Number.isInteger || function (value) {
-            return typeof value === 'number' &&
-                isFinite(value) &&
-                Math.floor(value) === value;
-        };        
+        return WidgetBootStrap;
+    }());
+
+    if(window.comapiConfig){
+        window._ddgChatConfig = window.comapiConfig;
     }
+    var widgetBootstrap = new WidgetBootStrap();
+
+    setTimeout(function () {
+        widgetBootstrap.initialise();
+    }, _ddgChatConfig.launchTimeout === undefined ? 5000 : _ddgChatConfig.launchTimeout);
 
 
-
-    // var widgetBootstrap = new this();
-
-    // setTimeout(function () {
-    //     widgetBootstrap.initialise();
-    // }, _ddgChatConfig.launchTimeout === undefined ? 5000 : _ddgChatConfig.launchTimeout);
+};

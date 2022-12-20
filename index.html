@@ -3,7 +3,22 @@
 <head>
 <title>Page Title</title>
 
-<script type="module" src="./dist.browser/index.js"></script>
+<!-- <script type="module" src="./dist.browser/index.js"></script> -->
+
+<script>
+    window._ddgChatConfig = {
+        apiSpace: '9ec294be-1bd9-4714-8fe7-73bab454c263',
+        urlBase: 'https://webchat.dotdigital.com'
+        
+    };
+    (function(d, s, id){
+        var js, cjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://webchat.dotdigital.com/widget/bootstrap.js';
+        cjs.parentNode.insertBefore(js, cjs);
+    }(document, 'script', 'ddg-chat-widget'));
+</script>
 </head>
 <body>
 

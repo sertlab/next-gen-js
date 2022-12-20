@@ -41,14 +41,12 @@ export class Chat extends DotdigitalIntegrationDecorator{
                 
                 try {
                     this.validateConfigurtation();
-                    globalThis['ddgChatConfig'] = {
-                        apiSpace: this.configurtation.get('apiSpace'),
-                        urlBase: this.configurtation.get('urlBase')};
-
-
-                    var x = DotdigitalChatScript.init();
-                        
-                    console.log(x);
+                    globalThis['_ddgChatConfig'] = {
+                        apiSpace: this.configurtation.get('apiSpace').value,
+                        urlBase: this.configurtation.get('urlBase').value
+                    };
+                    globalThis['comapiConfig'] = globalThis['_ddgChatConfig']
+                    this.setWrappee(DotdigitalChatScript);
                 }
                 catch (error) {
                     reject(error);
@@ -63,6 +61,7 @@ export class Chat extends DotdigitalIntegrationDecorator{
         public async call(action:CallableChatFunctions, data: ArgumentInterface[]): Promise<any> {
             try {
                 await this.setup();
+                await this.wrappee[action](data);
                 return this;
             }
             catch (error) {
