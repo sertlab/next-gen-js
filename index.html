@@ -13,7 +13,7 @@ function runChat()
     const config = new ChatModule.ConfigurationCollection();
     config.add({ 
         key:'apiSpace', 
-        value:"9ec294be-1bd9-4714-8fe7-73bab454c263"
+        value:"{Your name space ID}"
     })
     config.add({ 
         key:'urlBase', 
@@ -26,10 +26,10 @@ function runChat()
 function runTracking()
 {
     const config = new TrackingModule.ConfigurationCollection();
-    config.add({key:'region',value:"r1"})
+    config.add({key:'region',value:"{your region}"})
     const tracking = new TrackingModule.Tracking(config);
     tracking.call(TrackingModule.CallableTrackingFunctions.create, [
-        new TrackingModule.ModuleCallArgument('account_id', 'DM-5862029334-01', TrackingModule.ArgumentTypes.STRING)
+        new TrackingModule.ModuleCallArgument('account_id', '{Your tracking ID}', TrackingModule.ArgumentTypes.STRING)
     ])
     tracking.call(TrackingModule.CallableTrackingFunctions.track, []);
       
@@ -73,7 +73,7 @@ background: #504d4d;
 
 
             tracking.call(CallableTrackingFunctions.create, [
-                new TrackingModule.ModuleCallArgument('account_id', 'DM-5862029334-01', ArgumentTypes.STRING)
+                new TrackingModule.ModuleCallArgument('account_id', '{Your tracking ID}', ArgumentTypes.STRING)
             ])
             tracking.call(CallableTrackingFunctions.track, []);
             
@@ -105,7 +105,7 @@ background: #504d4d;
             const config = new ChatModule.ConfigurationCollection();
             config.add({ 
                 key:'apiSpace', 
-                value:"9ec294be-1bd9-4714-8fe7-73bab454c263"
+                value:"{Your name space ID}"
             })
             config.add({ 
                 key:'urlBase', 
