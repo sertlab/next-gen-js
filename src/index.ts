@@ -21,7 +21,7 @@ function run()
 {
     const config = new ConfigurationCollection();
     config.add({
-        key:'regeion',
+        key:'region',
         value:"r1"
     } as ConfigurationInterface)
     const tracking = new Tracking(config);

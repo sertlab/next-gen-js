@@ -16,8 +16,8 @@ export class Tracking extends DotdigitalIntegrationDecorator{
 
         protected validateConfigurtation(): boolean {
 
-            if(!this.configurtation.has('regeion')) {
-                throw new Error('Regeion is not set');
+            if(!this.configurtation.has('region')) {
+                throw new Error('Region is not set');
             }
 
             return true;
@@ -48,8 +48,8 @@ export class Tracking extends DotdigitalIntegrationDecorator{
                     globalThis[this.gloablReference].q = [];
                     DotdigitalTreackingScript.init(()=>{
                         // Possobile XXS 
-                        const regeion = this.configurtation.get('regeion');
-                        return `https://${regeion.value}.trackedweb.net/`;
+                        const region = this.configurtation.get('region');
+                        return `https://${region.value}.trackedweb.net/`;
                     })
                     this.setWrappee(globalThis['dmpt']);
                     
