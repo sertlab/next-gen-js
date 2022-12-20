@@ -5,28 +5,45 @@
 
 <script type="module" src="./dist.browser/index.js"></script>
 <script type="module">
-import { TrackingModule } from './dist.browser/index.js';
+
+import { TrackingModule, ChatModule } from './dist.browser/index.js';
+
+function runChat()
+{
+    const config = new ChatModule.ConfigurationCollection();
+    config.add({ 
+        key:'apiSpace', 
+        value:"{Your name space ID}"
+    })
+    config.add({ 
+        key:'urlBase', 
+        value:"https://webchat.dotdigital.com"
+    })
+    const chat = new ChatModule.Chat(config);
+    chat.call(ChatModule.CallableChatFunctions.init,[])
+}
 
 function runTracking()
 {
     const config = new TrackingModule.ConfigurationCollection();
-    config.add({key:'region',value:"r1"})
+    config.add({key:'region',value:"{your region}"})
     const tracking = new TrackingModule.Tracking(config);
     tracking.call(TrackingModule.CallableTrackingFunctions.create, [
-        new TrackingModule.ModuleCallArgument('account_id', 'DM-5862029334-01', TrackingModule.ArgumentTypes.STRING)
+        new TrackingModule.ModuleCallArgument('account_id', '{Your tracking ID}', TrackingModule.ArgumentTypes.STRING)
     ])
     tracking.call(TrackingModule.CallableTrackingFunctions.track, []);
       
 }
 
 runTracking();
+runChat();
 </script>
 </head>
 <body>
 
 <h1> Tracking: </h1>
 
-<h3> Avalable function: (CallableTrackingFunctions)</h3>
+<h3> Avalable function: (TrackingModule.CallableTrackingFunctions)</h3>
 <ul>
     <li>create</li>
     <li>track</li>
@@ -56,13 +73,49 @@ background: #504d4d;
 
 
             tracking.call(CallableTrackingFunctions.create, [
-                new TrackingModule.ModuleCallArgument('account_id', 'DM-5862029334-01', ArgumentTypes.STRING)
+                new TrackingModule.ModuleCallArgument('account_id', '{Your tracking ID}', ArgumentTypes.STRING)
             ])
             tracking.call(CallableTrackingFunctions.track, []);
             
         }
 
         runTracking();
+    </code>
+</pre>
+
+<h1> Chat: </h1>
+
+<h3> Avalable function: (ChatModule.CallableTrackingFunctions)</h3>
+<ul>
+    <li>init</li>
+</ul>
+
+<h3> Example:</h3>
+<pre style="
+width: fit-content;
+padding: 2rem;
+color: #fff;
+background: #504d4d;
+">
+    <code>
+        import { TrackingModule, ChatModule } from './dist.browser/index.js';
+
+        function runChat()
+        {
+            const config = new ChatModule.ConfigurationCollection();
+            config.add({ 
+                key:'apiSpace', 
+                value:"{Your name space ID}"
+            })
+            config.add({ 
+                key:'urlBase', 
+                value:"https://webchat.dotdigital.com"
+            })
+            const chat = new ChatModule.Chat(config);
+            chat.call(ChatModule.CallableChatFunctions.init,[])
+        }
+
+        runChat()
     </code>
 </pre>
 
