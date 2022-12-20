@@ -1,4 +1,5 @@
-import { ArgumentInterface, ArgumentTypes } from "../api/index";
+import { ArgumentInterface, ArgumentTypes } from "../api/index.js";
+import { sanitize } from '../utilities.js';
 
 export class ModuleCallArgument implements ArgumentInterface
 {
@@ -30,13 +31,18 @@ export class ModuleCallArgument implements ArgumentInterface
      * {@inheritdoc}
      */
     getKey(): string {
-        return this.key;
+        return sanitize(this.key);
     }
 
-    /**
+    /** 
      * {@inheritdoc}
      */
     getData(): any {
+
+        if (this.type === ArgumentTypes.STRING) {
+            return sanitize(this.data);
+        }
+
         return this.data;
     }
 
