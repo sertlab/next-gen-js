@@ -19,13 +19,13 @@ Tracking:
             const config = new TrackingModule.ConfigurationCollection();
             config.add({
                 key:'region',
-                value:"r1"
+                value:"{YOUR REGION}"
             })
             const tracking = new TrackingModule.Tracking(config);
 
 
             tracking.call(CallableTrackingFunctions.create, [
-                new TrackingModule.ModuleCallArgument('account_id', 'DM-5862029334-01', ArgumentTypes.STRING)
+                new TrackingModule.ModuleCallArgument('account_id', '{YOUR DD TRACKING ID}', ArgumentTypes.STRING)
             ])
             tracking.call(CallableTrackingFunctions.track, []);
             
@@ -52,7 +52,7 @@ Chat:
             const config = new ChatModule.ConfigurationCollection();
             config.add({ 
                 key:'apiSpace', 
-                value:"9ec294be-1bd9-4714-8fe7-73bab454c263"
+                value:"9{YOUR CHaT SPCAE ID}"
             })
             config.add({ 
                 key:'urlBase', 
