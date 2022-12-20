@@ -19,7 +19,7 @@ export const TrankingModule = {
 }
 
 
-function run()
+function runTracking()
 {
     const config = new ConfigurationCollection();
     config.add({
@@ -33,16 +33,17 @@ function run()
         new ModuleCallArgument('account_id', 'DM-5862029334-01', ArgumentTypes.STRING)
     ])
     tracking.call(CallableTrackingFunctions.track, []);
-      
-
-
-
-    const config2 = new ConfigurationCollection();
-    config2.add({key:'apiSpace', value:'fdsafdsa'});
-    config2.add({key:'urlBase', value:'url test'});
-
-    const chat = new Chat(config2);
-    chat.call(CallableChatFunctions.init,[]);
+    
 }
 
-run();
+function runChat()
+{
+    const config = new ConfigurationCollection();
+    config.add({ key:'apiSpace', value:"9ec294be-1bd9-4714-8fe7-73bab454c263"})
+    config.add({ key:'urlBase', value:"https://webchat.dotdigital.com"})
+    const chat = new Chat(config);
+    chat.call(CallableChatFunctions.init,[])
+    
+}
+runChat();
+//runTracking();
