@@ -1,5 +1,5 @@
 import { ConfigurationInterface } from '../api/configuration-interface';
-
+import { sanitize } from '../utilities.js';
 export class ConfigurationCollection {
 
     private _collection: ConfigurationInterface[] = [];
@@ -21,6 +21,8 @@ export class ConfigurationCollection {
         });
 
         if (configutaion) {
+            configutaion.value = sanitize(configutaion.value);
+            configutaion.key = sanitize(configutaion.key);
             return configutaion;
         }
 
@@ -34,7 +36,7 @@ export class ConfigurationCollection {
 
     public getValues(): any[] {
         return this._collection.map((config: ConfigurationInterface) => {
-            return config.value;
+            return sanitize(config.value);
         });
     }
 

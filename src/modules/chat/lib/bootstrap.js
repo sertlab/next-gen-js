@@ -209,9 +209,13 @@ export  function init() {
          */
         WidgetBootStrap.prototype.bootstrap = function (config) {
             this.log("bootstrap()", config);
-            var urlBase = _ddgChatConfig.urlBase + "/widgets/";
+            var urlBase = _ddgChatConfig.urlBase + "/widget/";
             this.log("urlBase: " + urlBase);
-            document.head.appendScript(urlBase + config.version + '/bridge.js', "comapi-widget-bridge");
+            const script = document.createElement('script');
+            script.src = urlBase + config.version + '/bridge.js';
+            script.id = "comapi-widget-bridge";
+            document.body.appendChild(script);
+
 
         }
 
