@@ -4,11 +4,67 @@
 <title>Page Title</title>
 
 <script type="module" src="./dist.browser/index.js"></script>
+<script type="module">
+import { TrackingModule } from './dist.browser/index.js';
+
+function runTracking()
+{
+    const config = new TrackingModule.ConfigurationCollection();
+    config.add({key:'region',value:"r1"})
+    const tracking = new TrackingModule.Tracking(config);
+    tracking.call(TrackingModule.CallableTrackingFunctions.create, [
+        new TrackingModule.ModuleCallArgument('account_id', 'DM-5862029334-01', TrackingModule.ArgumentTypes.STRING)
+    ])
+    tracking.call(TrackingModule.CallableTrackingFunctions.track, []);
+      
+}
+
+runTracking();
+</script>
 </head>
 <body>
 
-<h1>This is a Heading</h1>
-<p>This is a paragraph.</p>
+<h1> Tracking: </h1>
+
+<h3> Avalable function: (CallableTrackingFunctions)</h3>
+<ul>
+    <li>create</li>
+    <li>track</li>
+    <li>identify</li>
+    <li>cartInsight</li>
+    <li>version</li>
+</ul>
+
+<h3> Example:</h3>
+<pre style="
+width: fit-content;
+padding: 2rem;
+color: #fff;
+background: #504d4d;
+">
+    <code>
+        import { TrackingModule } from './dist.browser/index.js';
+
+        function runTracking()
+        {
+            const config = new TrackingModule.ConfigurationCollection();
+            config.add({
+                key:'region',
+                value:"r1"
+            })
+            const tracking = new TrackingModule.Tracking(config);
+
+
+            tracking.call(CallableTrackingFunctions.create, [
+                new TrackingModule.ModuleCallArgument('account_id', 'DM-5862029334-01', ArgumentTypes.STRING)
+            ])
+            tracking.call(CallableTrackingFunctions.track, []);
+            
+        }
+
+        runTracking();
+    </code>
+</pre>
 
 </body>
 </html>

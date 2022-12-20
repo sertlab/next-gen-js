@@ -11,7 +11,6 @@ export function init(endpointDomainResolver) {
 
     globalThis[publicName] = function (command) {
         var params = arguments;
-        console.log(params)
         switch (command) {
             case 'create': create(params[1], params[2]); break;
             case 'track': trackRequest(params[1]); break;
