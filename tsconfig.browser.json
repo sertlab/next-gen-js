@@ -2,14 +2,14 @@
     "$schema": "https://json.schemastore.org/tsconfig",
     "display": "Node 18",
     "compilerOptions": {
-      "module": "commonjs",
       "lib": ["es5", "es2015.promise", "dom", "es2015"],
       "target": "es5",
       "typeRoots": [
         "node_modules/@types"
       ],
       "allowJs": true,
-      "outDir": "dist",
+      "outDir": "dist.browser",
+      "module": "es2015",
       "moduleResolution": "node",
       "baseUrl": "src",
       "paths": {

@@ -3,13 +3,13 @@ import {processQueue,loadEndpoint,postEndpoint} from './common/utils.js';
 
 export function init(endpointDomainResolver) {
     
-    var publicName = window.dmtrackingobjectname;
-    var queue = window[publicName].q;
+    var publicName = globalThis.dmtrackingobjectname;
+    var queue = globalThis[publicName].q;
     var insightVersion = 'webInsight v1.0';
     var profileCode;
     var profileCookieDomains;
 
-    window[publicName] = function (command) {
+    globalThis[publicName] = function (command) {
         var params = arguments;
         console.log(params)
         switch (command) {
@@ -21,7 +21,7 @@ export function init(endpointDomainResolver) {
         }
     };
 
-    processQueue(queue, window[publicName]);
+    processQueue(queue, globalThis[publicName]);
 
     function create(code, cookieDomains) {
         profileCode = code
@@ -64,7 +64,7 @@ export function init(endpointDomainResolver) {
     }
 
     function buildUrlBase(endpoint) {
-        var accountId = profileCode || window.dm_insight_id; 
+        var accountId = profileCode || globalThis.dm_insight_id; 
         return endpointDomainResolver(accountId) + endpoint + '?accountID=' + accountId;
     }
 };

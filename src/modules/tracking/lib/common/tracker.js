@@ -77,7 +77,7 @@ export const Tracker = function (cookieDomains) {
     function getCurrentUrl() {
         var url = document.location.href;
         if (queries[dmCookieName]) {
-            var queryString = window.location.search.substring(1);
+            var queryString = globalThis.location.search.substring(1);
             var urlParts = queryString.split("&");
             var nonDmParts = [];
             for (var i = 0; i < urlParts.length; i++) {
@@ -104,7 +104,7 @@ export const Tracker = function (cookieDomains) {
     }
 
     function setQueryValues() {
-        var queryString = window.location.search;
+        var queryString = globalThis.location.search;
         if (queryString) parseQueryString(queryString);
     }
 
@@ -151,7 +151,7 @@ export const Tracker = function (cookieDomains) {
         if (profileCookieDomains) {
             var domains = profileCookieDomains.split(",");
             domains.forEach(function (domain) {
-                if (window.location.hostname.indexOf(domain) !== -1) {
+                if (globalThis.location.hostname.indexOf(domain) !== -1) {
                     domainSet = ";domain=" + domain;
                 }
             });
@@ -160,10 +160,10 @@ export const Tracker = function (cookieDomains) {
     }
 
     function generateUUID() {
-        if (typeof (window.crypto) != 'undefined' &&
-            typeof (window.crypto.getRandomValues) != 'undefined') {
+        if (typeof (globalThis.crypto) != 'undefined' &&
+            typeof (globalThis.crypto.getRandomValues) != 'undefined') {
             var buf = new Uint32Array(4);
-            window.crypto.getRandomValues(buf);
+            globalThis.crypto.getRandomValues(buf);
             var idx = -1;
             return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
                 idx++;

@@ -1,11 +1,13 @@
 {
   "name": "@theunacceptables/next-gen-js",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist.browser/index.js",
+  "types": "dist.browser/index.d.ts",
   "license": "MIT",
   "description": "Winning project for hackweek 2022",
   "scripts": {
-    "build": "tsc",
+    "build": "npm run build:node && npm run build:browser",
+    "build:node": "tsc --project tsconfig.node.json",
+    "build:browser": "tsc --project tsconfig.browser.json",
     "type-check": "tsc --noEmit"
   },
   "devDependencies": {

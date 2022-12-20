@@ -2,29 +2,23 @@
     "$schema": "https://json.schemastore.org/tsconfig",
     "display": "Node 18",
     "compilerOptions": {
-      "module": "commonjs",
-      "lib": ["es5", "es2015.promise", "dom", "es2015"],
-      "target": "es5",
-      "typeRoots": [
-        "node_modules/@types"
-      ],
       "allowJs": true,
-      "outDir": "dist",
+      "outDir": "dist.node",
       "moduleResolution": "node",
       "baseUrl": "src",
       "paths": {
         "src/*": ["./*"]
       },
-      "emitDecoratorMetadata": true,
-      "experimentalDecorators": true,
-      "allowSyntheticDefaultImports": true,
-      "declaration": false,
-      "sourceMap": true
+      "typeRoots": [
+        "./node_modules/@types", 
+        "./src/types"
+      ]
     },
     "include": [
       "src/**/*.ts",
       "src/module/*.js",
       "src/modules/tracking/lib/main.js"
     ],
+    
     "exclude": ["dist", "node_modules", "src/**/*.spec.ts", "src/**/*.test.ts"]
   }

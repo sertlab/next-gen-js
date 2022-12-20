@@ -4,12 +4,7 @@ import { ArgumentInterface } from "../../api/index.js";
 import { CallableTrackingFunctions } from "./index.js";
 import * as DotdigitalTreackingScript from "./lib/main.js";
 
-declare global {
-    var dmpt: {
-        q: any
-    }
-    var dmtrackingobjectname: any
-}
+
 
 export class Tracking extends DotdigitalIntegrationDecorator{
         
@@ -44,7 +39,6 @@ export class Tracking extends DotdigitalIntegrationDecorator{
         }
 
         protected setup(): Promise<any> {
-
             return new Promise((resolve, reject) => {
                 
                 try {
