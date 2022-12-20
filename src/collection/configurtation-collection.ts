@@ -8,6 +8,12 @@ export class ConfigurationCollection {
         this._collection.push(config);
     }
 
+    public has(key): boolean {
+        return this._collection.some((config: ConfigurationInterface) => {
+            return config.key === key;
+        });
+    }
+
     public get(key: string): ConfigurationInterface|null {
 
         const configutaion = this._collection.find((config: ConfigurationInterface) => {
@@ -24,6 +30,12 @@ export class ConfigurationCollection {
 
     public getAll(): ConfigurationInterface[] {
         return this._collection;
+    }
+
+    public getValues(): any[] {
+        return this._collection.map((config: ConfigurationInterface) => {
+            return config.value;
+        });
     }
 
 }

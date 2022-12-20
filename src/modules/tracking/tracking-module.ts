@@ -21,6 +21,10 @@ export class Tracking extends DotdigitalIntegrationDecorator{
 
         protected validateConfigurtation(): boolean {
 
+            if(!this.configurtation.has('regeion')) {
+                throw new Error('Regeion is not set');
+            }
+
             return true;
 
         }
@@ -48,7 +52,11 @@ export class Tracking extends DotdigitalIntegrationDecorator{
                     globalThis.dmtrackingobjectname = this.gloablReference;
                     globalThis[this.gloablReference] = {};
                     globalThis[this.gloablReference].q = [];
-                    DotdigitalTreackingScript.init()
+                    DotdigitalTreackingScript.init(()=>{
+                        // Possobile XXS 
+                        const regeion = this.configurtation.get('regeion');
+                        return `https://${regeion.value}.trackedweb.net/`;
+                    })
                     this.setWrappee(globalThis['dmpt']);
                     
                 }
@@ -58,18 +66,17 @@ export class Tracking extends DotdigitalIntegrationDecorator{
 
                 resolve(this);
             }).catch((error) => {
-
-                console.log(error);
-
+                console.error(error);
             });
         }
 
         public async call(action:CallableTrackingFunctions, data: ArgumentInterface[]): Promise<any> {
             try {
-                const args = data.map(argument => argument.getData());
-
                 await this.setup();
-                await this.wrappee(action, data);
+                await this.wrappee(action, data.reduce((acc, arg) => {
+                    acc.push(arg.getData());
+                    return acc;
+                }, []));
                 await this.teardown();
                 return this;
             }
