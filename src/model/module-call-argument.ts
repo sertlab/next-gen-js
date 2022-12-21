@@ -4,22 +4,22 @@ import { sanitize } from '../utilities.js';
 export class ModuleCallArgument implements ArgumentInterface
 {
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     key: string;
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     data: any;
 
      /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     type: ArgumentTypes;
 
      /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     constructor(key: string, data: any, type: ArgumentTypes) {
         this.key = key;
@@ -28,14 +28,14 @@ export class ModuleCallArgument implements ArgumentInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     getKey(): string {
         return sanitize(this.key);
     }
 
     /** 
-     * {@inheritdoc}
+     * @inheritDoc
      */
     getData(): any {
 
@@ -47,7 +47,7 @@ export class ModuleCallArgument implements ArgumentInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     getType(): ArgumentTypes {
         return this.type;

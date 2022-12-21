@@ -1,5 +1,32 @@
+# Dotdigital ESM script wrapper
+
+A ESM scrrip wrapepr to allow developer tointergarte dotdigital trackign and chat script weithin there SAP / PWA project easer that UDM syntax. 
+
+We include Typescript Types for evey part of our pacakge. 
+
+Commands:
+=====
+
+Build:
+
+This will genreate a dist.browser directory
+
+```Bash
+npm run build
+```
+
+Docs:
+
+This will generate API documentation allowing you to understand the package in more detail. 
+
+```Bash
+npm run docs
+```
+
 Tracking:
 =========
+
+
 
 ### Avalable function: (TrackingModule.CallableTrackingFunctions)
 
@@ -10,10 +37,8 @@ Tracking:
 *   version
 
 ### Example:
-
-    ```
-     import { TrackingModule } from './dist.browser/index.js';
-
+```javascript
+        import { TrackingModule } from './dist.browser/index.js';
         function runTracking()
         {
             const config = new TrackingModule.ConfigurationCollection();
@@ -32,9 +57,7 @@ Tracking:
         }
 
         runTracking();
-    ```
-    
-
+```
 Chat:
 =====
 
@@ -43,16 +66,14 @@ Chat:
 *   init
 
 ### Example:
-
-   ```
-    import { TrackingModule, ChatModule } from './dist.browser/index.js';
-
+```javascript
+        import { TrackingModule, ChatModule } from './dist.browser/index.js';
         function runChat()
         {
             const config = new ChatModule.ConfigurationCollection();
             config.add({ 
                 key:'apiSpace', 
-                value:"9{YOUR CHaT SPCAE ID}"
+                value:"{YOUR CHAT SPCAE ID}"
             })
             config.add({ 
                 key:'urlBase', 
@@ -63,4 +84,4 @@ Chat:
         }
 
         runChat()
-    ```
+```

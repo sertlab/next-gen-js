@@ -6,14 +6,16 @@
   "license": "MIT",
   "description": "Winning project for hackweek 2022",
   "scripts": {
-    "build": "npm run build:node && npm run build:browser",
-    "build:node": "tsc --project tsconfig.node.json",
+    "build": "npm run type-check && npm run build:browser",
     "build:browser": "tsc --project tsconfig.browser.json",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "docs": "npx typedoc --entryPointStrategy expand ./src"
   },
   "devDependencies": {
     "@types/dompurify": "^2.4.0",
     "@types/node": "^18.11.17",
+    "docdash": "^2.0.0",
+    "typedoc": "^0.23.23",
     "typescript": "^4.9.4"
   },
   "repository": {
