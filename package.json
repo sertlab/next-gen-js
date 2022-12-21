@@ -5,6 +5,9 @@
   "version": "1.0.0",
   "license": "MIT",
   "description": "Winning project for hackweek 2022",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "npm run type-check && npm run build:browser",
     "build:browser": "tsc --project tsconfig.browser.json",
