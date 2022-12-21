@@ -1,6 +1,6 @@
 # Dotdigital ESM script wrapper
 
-A ESM scrrip wrapepr to allow developer tointergarte dotdigital trackign and chat script weithin there SAP / PWA project easer that UDM syntax. 
+A ESM scrrip wrapepr to allow developer tointergarte dotdigital trackign and chat script weithin there SAP / PWA project easer that UMD syntax. 
 
 We include Typescript Types for evey part of our pacakge. 
 
